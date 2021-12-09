@@ -7,6 +7,7 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.StaggeredGridLayoutManager
 import com.josephgwara.retrofitexample.network.ApiClient
+import com.josephgwara.retrofitexample.network.Character
 import com.josephgwara.retrofitexample.network.CharacterResponse
 import retrofit2.Call
 import retrofit2.Response
@@ -33,5 +34,19 @@ class MainActivity : AppCompatActivity() {
 
         })
 
+    }
+    private fun processCharacterResponse(state: ScreenState<List<Character>?>){
+
+    when(state){
+        is ScreenState.Loading ->{
+            //TODO Add Progress bar
+
+        }
+        is ScreenState.Success ->{
+            viewModel.characterLiveData.observe(this,{})
+        }
+
+
+    }
     }
 }
